@@ -1,0 +1,10 @@
+{
+  "username": "saeed.automation@gmail.com",
+  "password": "Automation@CE77",
+  "messageTaskName": "Test Message Task",
+  "learningInstanceName": "Test Learning Instance",
+  "userDefinedFields": {
+    "field1": "Sample Text",
+    "field2": "Dropdown Option 1"
+  }
+}
