@@ -2,6 +2,7 @@
 
 import LoginPage from "../../pages/LoginPage";
 import HomePage from "../../pages/HomePage";
+import TaskbotEditPage from "../../pages/TaskBotEditPage";
 
 describe("Bot Creation Flow", () => {
   let testData;
@@ -14,22 +15,29 @@ describe("Bot Creation Flow", () => {
   });
 
   beforeEach(() => {
-    // ✅ Login before each test to ensure isolated, stateless testing
-    LoginPage.login(testData.username, testData.password);
+    // ✅ Login before each test using custom command
+    cy.login(testData.username, testData.password);
     LoginPage.verifyHomePageLoaded();
   });
 
-  it("should create a new bot and open the editor", () => {
-    // ✅ Action: Open the modal
+  it("should create a new bot, configure message box, and return to bot repo", () => {
+    // ✅ Step 1: Create bot from homepage
     HomePage.clickCreateBotButton();
-
-    // ✅ Action: Fill the bot name
     HomePage.typeBotName(testData.messageTaskName);
-
-    // ✅ Action: Submit the modal
     HomePage.clickCreateAndEditButton();
-
-    // ✅ Assertion: Ensure the editor page has loaded
     HomePage.verifyEditPageOpened();
+
+    // ✅ Step 2: Search for and insert a Message Box
+    TaskbotEditPage.searchForMessageBox();
+    TaskbotEditPage.selectMessageBoxOption();
+    TaskbotEditPage.typeMessageToDisplay(testData.messageText);
+
+    // ✅ Step 3: Save and close editor
+    TaskbotEditPage.clickSave();
+    TaskbotEditPage.clickClose();
+    TaskbotEditPage.verifyRedirectToBotRepo();
+
+    // Add logout step
+    cy.logout();
   });
 });

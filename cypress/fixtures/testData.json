@@ -1,8 +1,11 @@
 {
   "username": "saeed.automation@gmail.com",
   "password": "Automation@CE77",
-  "messageTaskName": "Test Message Task",
+  "messageTaskName": "sohaib",
+  "messageText": "This is a test message for the task.",
   "learningInstanceName": "Test Learning Instance",
+  "description": "This is a description for the test LI",
+  "documentType": "User-defined",
   "userDefinedFields": {
     "field1": "Sample Text",
     "field2": "Dropdown Option 1"
