@@ -1,7 +1,6 @@
 class TaskbotEditPage {
   searchForMessageBox() {
     cy.waitForLoadableToFinish();
-
     cy.get(".editor-palette-search__input")
       .should("be.visible")
       .clear()

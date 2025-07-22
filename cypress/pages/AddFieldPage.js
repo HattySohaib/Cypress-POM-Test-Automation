@@ -22,7 +22,7 @@ class AddFieldPage {
   }
 
   clickCreateButton() {
-    cy.frameLoaded("iframe"); // Ensure iframe is ready
+    cy.frameLoaded("iframe");
 
     cy.iframe().find('button[aria-label="Create"]').should("exist").click();
     cy.iframe()

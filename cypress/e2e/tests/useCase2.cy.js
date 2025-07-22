@@ -13,7 +13,7 @@ describe("Use Case 2 - Create a Learning Instance from Document Automation", () 
   });
 
   beforeEach(() => {
-    cy.login(testData.username, testData.password);
+    cy.login(testData.userName, testData.password);
     LoginPage.verifyHomePageLoaded();
   });
 
@@ -22,11 +22,9 @@ describe("Use Case 2 - Create a Learning Instance from Document Automation", () 
     HomePage.clickDocumentAutomation();
     HomePage.verifyLearningInstancesPageLoaded();
 
-    // ✅ Use iframe-safe click method
     LearningInstancePage.clickCreateLearningInstanceButton();
     LearningInstancePage.verifyModalOpened();
 
-    // ✅ Fill and submit form
     LearningInstancePage.fillLearningInstanceDetails({
       name: testData.learningInstanceName,
       description: testData.description,
@@ -37,6 +35,7 @@ describe("Use Case 2 - Create a Learning Instance from Document Automation", () 
 
     AddFieldPage.clickAddFieldButton();
     AddFieldPage.fillAndCreateField({ name: "Invoice", label: "Invoice" });
+    AddFieldPage.verifyFieldCreated(testData.learningInstanceName);
 
     cy.logout();
   });
